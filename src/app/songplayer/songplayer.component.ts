@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SongsdataService } from '../songsdata.service';
+import { Observable } from 'rxjs';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-songplayer',
@@ -6,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./songplayer.component.scss']
 })
 export class SongplayerComponent implements OnInit {
-
-  constructor() { }
+  songdetail: Object;
+  
+  constructor(private route: ActivatedRoute, private data: SongsdataService) { 
+      this.route.params.subscribe(params => this.songdetail = params.name);
+  }
 
   ngOnInit() {
+    this.data.getSongDetails(this.songdetail).subscribe(
+      data => {
+      this.songdetail = data.songs 
+      console.log(this.songdetail);
+    });
   }
 
 }
