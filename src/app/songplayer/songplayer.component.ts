@@ -18,7 +18,7 @@ export class SongplayerComponent implements OnInit {
   ngOnInit() {
     this.data.getSongDetails(this.songdetail).subscribe(
       data => {
-      this.songdetail = data.songs 
+      this.songdetail = data
       console.log(this.songdetail);
     });
   }

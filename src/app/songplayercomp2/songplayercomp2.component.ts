@@ -19,7 +19,7 @@ export class Songplayercomp2Component implements OnInit {
   ngOnInit() {
     this.data.getSongDetails(this.path).subscribe(
       data => {
-      this.path = data.songs.path 
+      this.path = data
       console.log(this.path);
     });
   }
