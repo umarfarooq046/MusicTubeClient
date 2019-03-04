@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+ 
+const config: SocketIoConfig = { url: 'http://localhost:3002', options: {} };
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +23,8 @@ import { Songplayercomp2Component } from './songplayercomp2/songplayercomp2.comp
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    SocketIoModule.forRoot(config) 
   ],
   providers: [],
   bootstrap: [AppComponent]
